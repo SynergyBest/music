@@ -14,7 +14,7 @@ read -r CONFIRMATION
 function global_install() {
     mkdir -p /usr/local/bin/
     cd /usr/local/bin/ || exit 1
-    curl -O https://raw.githubusercontent.com/SynergyBest/music-sh/main/music
+    curl -O https://raw.githubusercontent.com/SynergyBest/music/main/music
     chmod +x music
     echo "Done! Please run the command \"exec -l $SHELL\""
     cd ~ || exit 1
@@ -25,7 +25,7 @@ function local_install() {
     mkdir -p ~/bin
     export PATH=$PATH:$HOME/bin
     cd ~/bin || exit 1
-    curl -O https://raw.githubusercontent.com/SynergyBest/music-sh/main/music
+    curl -O https://raw.githubusercontent.com/SynergyBest/music/main/music
     chmod +x music
     echo "Done! Please run the command \"exec -l $SHELL\""
     cd ~ || exit 1
@@ -35,26 +35,26 @@ function local_install() {
 function local_conf() {
     echo "Do you want to run a local install?"
     read -r LOCAL_CONFIRMATION
-    if [[ ${LOCAL_CONFIRMATION,,} = yes ]]; then
+    if [[ ${LOCAL_CONFIRMATION} = yes ]]; then
         local_install
-    elif [[ ${LOCAL_CONFIRMATION,,} = y ]]; then
+    elif [[ ${LOCAL_CONFIRMATION} = y ]]; then
         local_install
-    elif [[ ${LOCAL_CONFIRMATION,,} = no ]]; then
+    elif [[ ${LOCAL_CONFIRMATION} = no ]]; then
         exit 1
-    elif [[ ${LOCAL_CONFIRMATION,,} = n ]]; then
+    elif [[ ${LOCAL_CONFIRMATION} = n ]]; then
         exit 1
     else
         exit 1
     fi
 }
 
-if [[ ${CONFIRMATION,,} = yes ]]; then
+if [[ ${CONFIRMATION} = yes ]]; then
     global_install
-elif [[ ${CONFIRMATION,,} = y ]]; then
+elif [[ ${CONFIRMATION} = y ]]; then
     gloabl_install
-elif [[ ${CONFIRMATION,,} = no ]]; then
+elif [[ ${CONFIRMATION} = no ]]; then
     local_conf
-elif [[ ${CONFIRMATION,,} = yes ]]; then
+elif [[ ${CONFIRMATION} = yes ]]; then
     local_conf
 else
     exit 1
