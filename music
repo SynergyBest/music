@@ -1,0 +1,43 @@
+#!/bin/bash
+
+###########################
+# CLI for mac music apps #
+#########################
+
+function usage() {
+    printf "Usage of $0:\n"
+    printf "\n"
+    printf "Options:\n"
+    printf "play, [app to play]\n"
+    printf "pause, [app to pause]\n"
+}
+
+SPOTIFY="Spotify"
+ITUNES="iTunes"
+
+if [[ ${1} = play ]]; then
+    if [[ ${2} = "itunes" ]]; then
+        osascript -e 'tell app "iTunes" to play'
+        exit 0
+    elif [[ ${2} = "spotify" ]]; then
+        osascript -e 'tell app "Spotify" to play'
+        exit 0
+    else
+        exit 1
+    fi
+elif [[ ${1} = pause ]]; then
+    if [[ ${2} = "itunes" ]]; then
+        osascript -e 'tell app "iTunes" to pause'
+        exit 0
+    elif [[ ${2} = "spotify" ]]; then
+        osascript -e 'tell app "Spotify" to pause'
+        exit 0
+    else
+        exit 1
+    fi
+elif [[ ${1} = help ]]; then
+    usage
+else
+    exit 1
+fi
+exit 0
