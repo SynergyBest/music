@@ -1,1 +1,3 @@
 *.applescript linguist-language=AppleScript
+*.imgbotconfig linguist-language=json
+*.prettierrc linguist-language=json
